@@ -8,26 +8,36 @@ main {
   margin: auto;
   width: 100%;
   height: 100vh;
-  max-width: 1280px;
+  max-width: 1440px;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
   overflow: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 
   & > .header {
-    flex-shrink: 0;
-    flex-basis: 400px;
+    flex: 1 0 400px;
     width: 100%;
     color: #fff;
     margin: 32px auto;
+
+    & > div {
+      margin: auto;
+      width: fit-content;
+    }
   
-    & > h1 {
+    & h1 {
       font-size: 80px;
       font-weight: bolder;
       margin: 0;
     }
-    & > span {
+    & span {
       margin: 4px;
     }
   }
@@ -36,7 +46,7 @@ main {
     margin: 32px;
     border-radius: 8px;
     padding: 24px;
-    flex: 1 0 60%;
+    flex: 1 0 50%;
     color: #fff;
     // background-color: #002036aa;
     background: linear-gradient(to bottom,#00203630 50%, #00203699 100%);;
@@ -44,6 +54,7 @@ main {
     display: grid;
     grid-template-columns: 1fr 1fr;
     row-gap: 32px;
+    column-gap: 16px;
 
     & > .role {
       grid-column-start: 1;
@@ -54,6 +65,22 @@ main {
     }
 
     & > .rank, & > .loto-result {
+      & > ol {
+        height: fit-content;
+        max-height: 240px;
+        overflow-y: scroll;
+
+        &::-webkit-scrollbar {
+          width: 12px;
+          border-radius: 6px;
+          background-color: #00000030;
+        }
+        &::-webkit-scrollbar-thumb {
+          width: 12px;
+          border-radius: 6px;
+          background-color: #ffffff30;
+        }
+      }
       & li {
         margin: 12px 0;
       }

@@ -8,38 +8,47 @@ main {
   margin: auto;
   width: 100%;
   height: 100vh;
-  max-width: 1280px;
+  max-width: 1440px;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
   overflow: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+main::-webkit-scrollbar {
+  display: none;
 }
 main > .header {
-  flex-shrink: 0;
-  flex-basis: 400px;
+  flex: 1 0 400px;
   width: 100%;
   color: #fff;
   margin: 32px auto;
 }
-main > .header > h1 {
+main > .header > div {
+  margin: auto;
+  width: fit-content;
+}
+main > .header h1 {
   font-size: 80px;
   font-weight: bolder;
   margin: 0;
 }
-main > .header > span {
+main > .header span {
   margin: 4px;
 }
 main > .content {
   margin: 32px;
   border-radius: 8px;
   padding: 24px;
-  flex: 1 0 60%;
+  flex: 1 0 50%;
   color: #fff;
   background: linear-gradient(to bottom, rgba(0, 32, 54, 0.1882352941) 50%, rgba(0, 32, 54, 0.6) 100%);
   display: grid;
   grid-template-columns: 1fr 1fr;
   row-gap: 32px;
+  column-gap: 16px;
 }
 main > .content > .role {
   grid-column-start: 1;
@@ -47,6 +56,21 @@ main > .content > .role {
 }
 main > .content > .role li {
   margin: 12px 0;
+}
+main > .content > .rank > ol, main > .content > .loto-result > ol {
+  height: fit-content;
+  max-height: 240px;
+  overflow-y: scroll;
+}
+main > .content > .rank > ol::-webkit-scrollbar, main > .content > .loto-result > ol::-webkit-scrollbar {
+  width: 12px;
+  border-radius: 6px;
+  background-color: rgba(0, 0, 0, 0.1882352941);
+}
+main > .content > .rank > ol::-webkit-scrollbar-thumb, main > .content > .loto-result > ol::-webkit-scrollbar-thumb {
+  width: 12px;
+  border-radius: 6px;
+  background-color: rgba(255, 255, 255, 0.1882352941);
 }
 main > .content > .rank li, main > .content > .loto-result li {
   margin: 12px 0;
