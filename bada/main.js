@@ -30,6 +30,11 @@ const getMonthlyCommitCount = async () => {
       throw new Error("Failed to fetch commits");
     }
 
+    const rateLimitRemaining = response.headers.get("X-Ratelimit-Remaining");
+
+    document.getElementById("remainingRefreshCount").textContent =
+      rateLimitRemaining;
+
     const commits = await response.json();
 
     // Count commits by collaborator
