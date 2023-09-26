@@ -2,11 +2,10 @@
 <html>
   <head>
     <title>하루 하나 알고리즘 챌린지</title>
-    <link rel="stylesheet" href="./css/main.css">
-    <link rel="stylesheet" href="./css/wave.css">
+    <link rel="stylesheet" href="./css/main.css" />
+    <link rel="stylesheet" href="./css/wave.css" />
   </head>
   <body>
-    
     <main>
       <div class="header">
         <div>
@@ -19,44 +18,60 @@
           <h2>📢 규칙</h2>
           <ol>
             <li>
-              한 달동안 푼 문제 수를 가중치로해서 실시간 추첨합니다.<br>
+              한 달동안 푼 문제 수를 가중치로해서 추첨합니다.<br />
               푼 문제 수가 많을수록 추첨 내역에서 상단에 위치할 확률이 높습니다.
             </li>
             <li>
-              새로 문제를 해결할 때마다 다시 추첨합니다.<br>
-              추첨 과정은 시드가 정해져있기 때문에 새로 문제를 해결한 사람이 없다면 추첨 결과는 언제나 같습니다.
+              누군가 새로 문제를 해결할 때마다 다시 추첨합니다.<br />
+              추첨 과정은 시드가 고정되어 있기 때문에 새로 문제를 해결한 사람이
+              없다면 추첨 결과는 언제나 같습니다.
             </li>
             <li>
-              Github API를 활용하기 때문에 한 IP당 한 시간에 최대 60번 새로고침할 수 있습니다.
+              Github API를 활용하기 때문에 한 IP당 한 시간에 최대 60번
+              새로고침할 수 있습니다. 현재 남은 새로고침 횟수:
+              <span id="remainingRefreshCount"></span> 회
             </li>
           </ol>
         </section>
-    
+
         <section class="rank">
-          <h2>💻 커밋 순위</h2>
+          <h2>💻 문제 풀이 순위</h2>
           <ol id="commitCounts"></ol>
         </section>
-    
+
         <section class="loto-result">
-          <h2>👑 추첨 내역</h2>
+          <h2>👑 이번 달 추첨 내역</h2>
           <ol id="commitCountsShuffled"></ol>
         </section>
       </div>
-
     </main>
-    
+
     <div class="waveWrapper waveAnimation">
       <div class="waveWrapperInner bgTop">
-        <div class="wave waveTop" style="background-image: url('http://front-end-noobs.com/jecko/img/wave-top.png')"></div>
+        <div
+          class="wave waveTop"
+          style="
+            background-image: url('http://front-end-noobs.com/jecko/img/wave-top.png');
+          "
+        ></div>
       </div>
       <div class="waveWrapperInner bgMiddle">
-        <div class="wave waveMiddle" style="background-image: url('http://front-end-noobs.com/jecko/img/wave-mid.png')"></div>
+        <div
+          class="wave waveMiddle"
+          style="
+            background-image: url('http://front-end-noobs.com/jecko/img/wave-mid.png');
+          "
+        ></div>
       </div>
       <div class="waveWrapperInner bgBottom">
-        <div class="wave waveBottom" style="background-image: url('http://front-end-noobs.com/jecko/img/wave-bot.png')"></div>
+        <div
+          class="wave waveBottom"
+          style="
+            background-image: url('http://front-end-noobs.com/jecko/img/wave-bot.png');
+          "
+        ></div>
       </div>
     </div>
-
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/seedrandom/3.0.5/seedrandom.min.js"></script>
     <script src="./shuffleWithSeed.js"></script>

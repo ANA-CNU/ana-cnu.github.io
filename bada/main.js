@@ -30,6 +30,11 @@ const getMonthlyCommitCount = async () => {
       throw new Error("Failed to fetch commits");
     }
 
+    const rateLimitRemaining = response.headers.get("X-Ratelimit-Remaining");
+
+    document.getElementById("remainingRefreshCount").textContent =
+      rateLimitRemaining;
+
     const commits = await response.json();
 
     // Count commits by collaborator
@@ -60,7 +65,7 @@ const getMonthlyCommitCount = async () => {
   // Display the results
   const commitCountsElement = document.getElementById("commitCounts");
   sortedCollaborators.forEach(([collaborator, commitCount]) => {
-    commitCountsElement.innerHTML += `<li>${collaborator}: ${commitCount} commits</li>`;
+    commitCountsElement.innerHTML += `<li>${collaborator}: ${commitCount} 문제</li>`;
   });
 
   return commitCountByCollaborator;
@@ -82,7 +87,7 @@ const getWeightedShuffle = (collaborators, seed) => {
   // Display the results
   const commitCountsElement = document.getElementById("commitCountsShuffled");
   uniqueArray.forEach((collaborator) => {
-    commitCountsElement.innerHTML += `<li>${collaborator}: ${collaborators[collaborator]} commits</li>`;
+    commitCountsElement.innerHTML += `<li>${collaborator}: ${collaborators[collaborator]} 문제</li>`;
   });
 
   return uniqueArray;
