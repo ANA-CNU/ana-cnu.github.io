@@ -1,0 +1,66 @@
+html, body {
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+main {
+  margin: auto;
+  width: 100%;
+  height: 100vh;
+  max-width: 1280px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  overflow: scroll;
+
+  & > .header {
+    flex-shrink: 0;
+    flex-basis: 400px;
+    width: 100%;
+    color: #fff;
+    margin: 32px auto;
+  
+    & > h1 {
+      font-size: 80px;
+      font-weight: bolder;
+      margin: 0;
+    }
+    & > span {
+      margin: 4px;
+    }
+  }
+
+  & > .content {
+    margin: 32px;
+    border-radius: 8px;
+    padding: 24px;
+    flex: 1 0 60%;
+    color: #fff;
+    // background-color: #002036aa;
+    background: linear-gradient(to bottom,#00203630 50%, #00203699 100%);;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    row-gap: 32px;
+
+    & > .role {
+      grid-column-start: 1;
+      grid-column-end: 3;
+      & li {
+        margin: 12px 0;
+      }
+    }
+
+    & > .rank, & > .loto-result {
+      & li {
+        margin: 12px 0;
+      }
+      @media (max-width: 800px) {
+        grid-column-start: 1;
+        grid-column-end: 3;
+      }
+    }
+  }
+}
