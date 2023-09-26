@@ -24,6 +24,7 @@ main {
   & > .header {
     flex: 1 0 400px;
     width: 100%;
+    max-width: 100%;
     color: #fff;
     margin: 32px auto;
 
@@ -36,6 +37,10 @@ main {
       font-size: 80px;
       font-weight: bolder;
       margin: 0;
+
+      @media (max-width: 800px) {
+        font-size: 40px;
+      }
     }
     & span {
       margin: 4px;
@@ -87,6 +92,14 @@ main {
       @media (max-width: 800px) {
         grid-column-start: 1;
         grid-column-end: 3;
+      }
+    }
+
+    @media (max-width: 800px) {
+      margin: 32px 12px;
+      font-size: 0.8em;
+      & ol {
+        padding-left: 24px;
       }
     }
   }

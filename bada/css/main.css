@@ -23,6 +23,7 @@ main::-webkit-scrollbar {
 main > .header {
   flex: 1 0 400px;
   width: 100%;
+  max-width: 100%;
   color: #fff;
   margin: 32px auto;
 }
@@ -34,6 +35,11 @@ main > .header h1 {
   font-size: 80px;
   font-weight: bolder;
   margin: 0;
+}
+@media (max-width: 800px) {
+  main > .header h1 {
+    font-size: 40px;
+  }
 }
 main > .header span {
   margin: 4px;
@@ -79,6 +85,15 @@ main > .content > .rank li, main > .content > .loto-result li {
   main > .content > .rank, main > .content > .loto-result {
     grid-column-start: 1;
     grid-column-end: 3;
+  }
+}
+@media (max-width: 800px) {
+  main > .content {
+    margin: 32px 12px;
+    font-size: 0.8em;
+  }
+  main > .content ol {
+    padding-left: 24px;
   }
 }
 
