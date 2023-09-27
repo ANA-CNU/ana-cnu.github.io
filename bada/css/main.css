@@ -11,7 +11,7 @@ main {
   max-width: 1440px;
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
+  align-items: baseline;
   justify-content: space-between;
   overflow: scroll;
   -ms-overflow-style: none;
@@ -21,6 +21,8 @@ main::-webkit-scrollbar {
   display: none;
 }
 main > .header {
+  position: sticky;
+  top: calc(50% - 32px);
   flex: 1 0 400px;
   width: 100%;
   max-width: 100%;
@@ -44,6 +46,11 @@ main > .header h1 {
 main > .header span {
   margin: 4px;
 }
+@media (max-width: 800px) {
+  main > .header {
+    position: static;
+  }
+}
 main > .content {
   margin: 32px;
   border-radius: 8px;
@@ -63,26 +70,26 @@ main > .content > .role {
 main > .content > .role li {
   margin: 12px 0;
 }
-main > .content > .rank > ol, main > .content > .loto-result > ol {
+main > .content > .rank > ol, main > .content > .rank > ul, main > .content > .loto-result > ol, main > .content > .loto-result > ul, main > .content > .recent > ol, main > .content > .recent > ul {
   height: fit-content;
-  max-height: 240px;
+  max-height: 200px;
   overflow-y: scroll;
 }
-main > .content > .rank > ol::-webkit-scrollbar, main > .content > .loto-result > ol::-webkit-scrollbar {
+main > .content > .rank > ol::-webkit-scrollbar, main > .content > .rank > ul::-webkit-scrollbar, main > .content > .loto-result > ol::-webkit-scrollbar, main > .content > .loto-result > ul::-webkit-scrollbar, main > .content > .recent > ol::-webkit-scrollbar, main > .content > .recent > ul::-webkit-scrollbar {
   width: 12px;
   border-radius: 6px;
   background-color: rgba(0, 0, 0, 0.1882352941);
 }
-main > .content > .rank > ol::-webkit-scrollbar-thumb, main > .content > .loto-result > ol::-webkit-scrollbar-thumb {
+main > .content > .rank > ol::-webkit-scrollbar-thumb, main > .content > .rank > ul::-webkit-scrollbar-thumb, main > .content > .loto-result > ol::-webkit-scrollbar-thumb, main > .content > .loto-result > ul::-webkit-scrollbar-thumb, main > .content > .recent > ol::-webkit-scrollbar-thumb, main > .content > .recent > ul::-webkit-scrollbar-thumb {
   width: 12px;
   border-radius: 6px;
   background-color: rgba(255, 255, 255, 0.1882352941);
 }
-main > .content > .rank li, main > .content > .loto-result li {
+main > .content > .rank li, main > .content > .loto-result li, main > .content > .recent li {
   margin: 12px 0;
 }
 @media (max-width: 800px) {
-  main > .content > .rank, main > .content > .loto-result {
+  main > .content > .rank, main > .content > .loto-result, main > .content > .recent {
     grid-column-start: 1;
     grid-column-end: 3;
   }
@@ -92,7 +99,7 @@ main > .content > .rank li, main > .content > .loto-result li {
     margin: 32px 12px;
     font-size: 0.8em;
   }
-  main > .content ol {
+  main > .content ol, main > .content ul {
     padding-left: 24px;
   }
 }
