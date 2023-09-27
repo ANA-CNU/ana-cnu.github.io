@@ -97,10 +97,36 @@ const displayPrizeRank = (uniqueUserNames, solveCountByUser) => {
   });
 };
 
+const getRecentSolved = (monthlyCommits) => {
+  const recentSolved = [];
+
+  monthlyCommits.forEach((commit) => {
+    const userName = commit.commit.author.name;
+    const commitDate = new Date(commit.commit.author.date);
+
+    recentSolved.push({
+      userName,
+      commitDate,
+    });
+  });
+
+  return recentSolved;
+};
+
+const displayRecentSolved = (recentSolved) => {
+  const recentSolvedElement = document.getElementById("recentSolved");
+  recentSolved.forEach(({ userName, commitDate }) => {
+    recentSolvedElement.innerHTML += `<li>${userName}: ${commitDate.toLocaleString()}</li>`;
+  });
+};
+
 getMonthlyCommits().then((monthlyCommits) => {
   const solveCountByUser = getSolveCountByUser(monthlyCommits);
   displaySolveCountRank(solveCountByUser);
 
   const prizeRank = getPrizeRank(solveCountByUser);
   displayPrizeRank(prizeRank, solveCountByUser);
+
+  const recentSolved = getRecentSolved(monthlyCommits);
+  displayRecentSolved(recentSolved);
 });
