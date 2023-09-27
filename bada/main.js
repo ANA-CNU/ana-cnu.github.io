@@ -48,7 +48,34 @@ const getMonthlyCommits = async () => {
   return monthlyCommits;
 };
 
+const filterCommitsByAuthor = (monthlyCommits) => {
+  const commitDateByAuthor = {};
+  const filteredCommits = [];
+
+  monthlyCommits.forEach((commit) => {
+    const name = commit.commit.author.name;
+
+    const commitDateUTC = new Date(commit.commit.author.date);
+    commitDateUTC.setHours(commitDateUTC.getHours() + 9);
+
+    // Extract the date (YYYY-MM-DD) portion
+    const commitDateStr = commitDateUTC.toISOString().split("T")[0];
+
+    if (!commitDateByAuthor[name]) {
+      commitDateByAuthor[name] = new Set();
+    }
+
+    if (!commitDateByAuthor[name].has(commitDateStr)) {
+      commitDateByAuthor[name].add(commitDateStr);
+      filteredCommits.push(commit);
+    }
+  });
+
+  return filteredCommits;
+};
+
 const getSolveCountByUser = (monthlyCommits) => {
+  monthlyCommits = filterCommitsByAuthor(monthlyCommits);
   const solveCountByUser = {};
 
   monthlyCommits.forEach((commit) => {
@@ -98,6 +125,7 @@ const displayPrizeRank = (uniqueUserNames, solveCountByUser) => {
 };
 
 const getRecentSolved = (monthlyCommits) => {
+  monthlyCommits = filterCommitsByAuthor(monthlyCommits);
   const recentSolved = [];
 
   monthlyCommits.forEach((commit) => {
