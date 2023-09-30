@@ -88,6 +88,17 @@ const getSolveCountByUser = (monthlyCommits) => {
     }
   });
 
+  const diff = {
+    soyun11: -1,
+    "nube-net": -1,
+  };
+
+  for (const [key, value] of Object.entries(diff)) {
+    if (solveCountByUser[key]) {
+      solveCountByUser[key] += value;
+    }
+  }
+
   return solveCountByUser;
 };
 
