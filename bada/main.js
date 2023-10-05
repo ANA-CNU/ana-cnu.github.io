@@ -180,6 +180,8 @@ function shuffleWithSeed(arr, seed) {
 }
 
 getMonthlyCommits().then((monthlyCommits) => {
+  monthlyCommits = filterBlackList(monthlyCommits);
+
   const solveCountByUser = getSolveCountByUser(monthlyCommits);
   displaySolveCountRank(solveCountByUser);
 
