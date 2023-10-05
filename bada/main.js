@@ -148,6 +148,21 @@ const displayRecentSolved = (recentSolved) => {
   });
 };
 
+const filterBlackList = (monthlyCommits) => {
+  const blackList = ["sion-k"];
+  const filteredCommits = [];
+
+  monthlyCommits.forEach((commit) => {
+    const name = commit.commit.author.name;
+
+    if (!blackList.includes(name)) {
+      filteredCommits.push(commit);
+    }
+  });
+
+  return filteredCommits;
+};
+
 getMonthlyCommits().then((monthlyCommits) => {
   const solveCountByUser = getSolveCountByUser(monthlyCommits);
   displaySolveCountRank(solveCountByUser);
