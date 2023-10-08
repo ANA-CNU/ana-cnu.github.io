@@ -6,11 +6,18 @@ const getMonthlyCommits = async () => {
   let page = 1;
 
   // Determine the current year and month in UTC+9 (Japan Standard Time)
-  const currentDateInJST = new Date(
-    new Date().toLocaleString("en-US", { timeZone: "Asia/Tokyo" })
+  const currentDateInKST = new Date(
+    new Date().toLocaleString("en-US", { timeZone: "Asia/Seoul" })
   );
-  const currentYear = currentDateInJST.getFullYear();
-  const currentMonth = currentDateInJST.getMonth() + 1; // Months are 0-indexed
+
+  currentDateInKST.setDate(1); // Set the date to the first day of the month
+  currentDateInKST.setHours(0, 0, 0, 0); // Set the time to 15:00:00
+
+  const sinceYear = currentDateInKST.getFullYear();
+  const sinceMonth = currentDateInKST.getUTCMonth() + 1; // Months are 0-indexed
+  const sinceDate = currentDateInKST.getUTCDate();
+  const sinceHours = currentDateInKST.getUTCHours();
+  const sinceMinutes = currentDateInKST.getUTCMinutes();
   const maximumRequest = 20;
   let requestCount = 0;
 
@@ -18,9 +25,9 @@ const getMonthlyCommits = async () => {
 
   while (requestCount < maximumRequest) {
     // Build the URL to list commits for the current month on the current page
-    const commitsUrl = `${baseApiUrl}/repos/${repoOwner}/${repoName}/commits?since=${currentYear}-${currentMonth
+    const commitsUrl = `${baseApiUrl}/repos/${repoOwner}/${repoName}/commits?since=${sinceYear}-${sinceMonth
       .toString()
-      .padStart(2, "0")}-01T00:00:00+09:00&page=${page}&per_page=${perPage}`;
+      .padStart(2, "0")}-${sinceDate.toString().padStart(2,"0")}T${sinceHours.toString().padStart(2,"0")}:${sinceMinutes.toString().padStart(2,"0")}:00Z&page=${page}&per_page=${perPage}`;
 
     // Fetch commits for the current page
     const response = await fetch(commitsUrl);
