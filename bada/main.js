@@ -119,7 +119,7 @@ const getPrizeRank = (solveCountByUser) => {
     }
   }
 
-  seed = `ANA-${weightedUserNames.length}}`
+  seed = `ANA-${weightedUserNames.length}`
   const shuffledUserNames = shuffleWithSeed(weightedUserNames, seed);
   const prizeRank = [...new Set(shuffledUserNames)];
 
