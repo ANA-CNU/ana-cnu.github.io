@@ -109,8 +109,9 @@ const displaySolveCountRank = (solveCountByUser) => {
   });
 };
 
-const getPrizeRank = (solveCountByUser, seed = "ANA") => {
+const getPrizeRank = (solveCountByUser) => {
   const weightedUserNames = [];
+  let seed = "";
 
   for (const [userName, commitCount] of Object.entries(solveCountByUser)) {
     for (let i = 0; i < commitCount; i++) {
@@ -118,6 +119,7 @@ const getPrizeRank = (solveCountByUser, seed = "ANA") => {
     }
   }
 
+  seed = `ANA-${weightedUserNames.length}}`
   const shuffledUserNames = shuffleWithSeed(weightedUserNames, seed);
   const prizeRank = [...new Set(shuffledUserNames)];
 
