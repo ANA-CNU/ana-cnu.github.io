@@ -183,7 +183,13 @@ const displayRecentSolved = (recentSolved) => {
 };
 
 const filterBlackList = (monthlyCommits) => {
-  const blackList = ["sion-k", "Sion Kim", "VertexToEdge", "spicypotato0823"];
+  const blackList = [
+    "sion-k",
+    "Sion Kim",
+    "VertexToEdge",
+    "spicypotato0823",
+    "JJH123123123",
+  ];
   const filteredCommits = [];
 
   monthlyCommits.forEach((commit) => {
