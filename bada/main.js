@@ -189,6 +189,7 @@ const filterBlackList = (monthlyCommits) => {
     "VertexToEdge",
     "spicypotato0823",
     "JJH123123123",
+    "awj1052",
   ];
   const filteredCommits = [];
 
